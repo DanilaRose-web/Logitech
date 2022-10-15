@@ -1,0 +1,225 @@
+.section-specifications {
+   padding: 90px 0;
+   // background: linear-gradient(180deg, #252628 0%, #17181A 100%);
+   background: $dark_3;
+   .container-slider {
+      @include container ( $maxWidth: 1920px, $padding: 0 );
+      position: relative;
+   }
+
+   overflow: hidden;
+   transition: all 0.2s ease-out;
+}
+
+.swiper.specifications-swiper {
+   // padding-bottom: 60px;
+   width: 100%;
+   height: 100%;
+   .swiper-pagination-bullets.swiper-pagination-horizontal,
+   .swiper-pagination-custom,
+   .swiper-pagination-fraction,
+   .swiper.swiper-horizontal>.swiper-pagination-bullets {
+      bottom: 0;
+   }
+   .swiper-slide {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      .slide-content {
+         .title, .price {
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px);
+            transition: all 0.4s ease-out;
+         }
+         .title {
+            padding-top: 30px;
+            font-size: 23px;
+            font-weight: 600;
+            line-height: 94%;
+            color: $light;
+         }
+         .price {
+            margin-top: 10px;
+            font-size: 30px;
+            font-weight: 600;
+            color: $decoration;
+         }
+         .img {
+            width: 100%;
+            transform: scale(0.5);
+            transition: all 0.8s ease-out;
+            img {
+               max-width: 100%;
+               height: auto;
+            }  
+         }
+      }
+      &.swiper-slide-active {
+         .slide-content .img {
+            transform: scale(1);
+         }
+      }
+      &.swiper-slide-active {
+         .title, .price {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            transition-delay: 0.65s;
+         }
+         .price {
+            transition-delay: 0.75s;
+         }
+      }
+   }
+}
+
+
+// Content
+.specifications-content {
+   margin: 30px clamp(40px, 8vw, 80px) 0 clamp(100px, 8vw, 160px);
+   position: relative;
+   overflow: hidden;
+   min-height: 400px;
+   z-index: 0;
+   .slides-tabs-content {
+      @include container ($maxWidth: 1920px);
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-out;
+      .inner-tabs {
+         margin: 0 auto;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         grid-template-rows: auto;
+         gap: 20px;
+         max-width: 1280px;
+         transition: all 0.4s ease-out;
+         li {
+            padding: 20px;
+            align-self: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            font-weight: 600;
+            color: $light;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate3d(0, 20px, 0);
+            transition: all 0.5s ease-out, color 0.2s ease-out 0s;
+            &:after {
+               content: '';
+               position: absolute;
+               bottom: 0;
+               left: 50%;
+               transform: translateX(-50%);
+               width: 0;
+               height: 4px;
+               background: $decoration;
+               border-radius: 30px;
+               transition: all 0.3s ease-out;
+            }
+            &:hover {
+               color: $decoration;
+            }
+            &.active {
+               &:after {
+                  width: 100%;
+               }
+            }
+         }
+      }
+      .inner-tabs-content-wrap {
+         margin-top: 60px;
+         position: absolute;
+         left: 0;
+         width: 100%;
+         opacity: 0;
+         visibility: hidden;
+         transform: translate3d(0, 15px, 0);
+         transition: all 0.3s ease-out;
+         .ui-button-wrap {
+            padding-top: 40px;
+            display: flex;
+            justify-content: center;
+            @include scrollAnimate($animateShowDelay: 0.1s);
+            .ui-button {
+               @include button( 
+                  $adaptiveWidth: true, 
+                  $maxWidth: 300px 
+               );
+               z-index: 2;
+               @media all and (max-width: 500px) {
+                  max-width: 100%;
+               }
+            }
+         }
+      }
+      .inner-tabs-content {
+         color: white;
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         opacity: 0;
+         visibility: hidden;
+         transform: translate3d(0, 15px, 0);
+         transition: all 0.3s ease-out;
+         &.active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            z-index: 2;
+            transition-delay: 0.4s;
+         }
+      }
+      &.active {
+         position: relative;
+         opacity: 1;
+         visibility: visible;
+         transition-delay: 0.3s;
+         z-index: 2;
+         .inner-tabs {
+            $i: 0.15s;
+            @for $item from 1 through 4 {
+               $i: $i + 0.1s;
+               li:nth-child(#{$item}) {
+                  opacity: 1;
+                  visibility: visible;
+                  transform: none;
+                  transition: all 0.5s ease-out $i, color 0.3s ease-out 0s;
+               }
+            }
+         }
+         .inner-tabs-content-wrap {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            position: relative;
+            z-index: 2;
+            transition-delay: 0.45s;
+         }
+      }
+   }
+}
+
+
+
+@media all and (max-width: 1000px) {
+   .section-specifications .specifications-content { margin: 30px 40px 0 40px; }
+}
+
+@media all and (max-width: 640px) {
+   .section-specifications .specifications-content { margin: 30px 0 0 0; }
+   .specifications-content .slides-tabs-content .inner-tabs { grid-template-columns: 1fr; }
+}

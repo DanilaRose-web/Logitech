@@ -1,0 +1,27 @@
+
+/*  */
+%contentPadding {
+   padding: 0 clamp(40px, 4vw, 80px);
+}
+
+
+
+%lavaLamp {
+   padding: 0;
+   position: absolute;
+   background: $decoration;
+   bottom: 0;
+   left: 0;
+   height: 5px;
+   border-radius: 30px;
+   // &::after {
+   //    content: '';
+   //    position: absolute;
+   //    top: 0;
+   //    left: 50%;
+   //    transform: translateX(-50%);
+   //    border-right: 10px solid transparent;
+   //    border-left: 10px solid transparent;
+   //    border-top: 10px solid $decoration;
+   // }
+}

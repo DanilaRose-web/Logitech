@@ -1,0 +1,102 @@
+form {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto;
+   opacity: 0;
+   transition: all 0.1s ease-out;
+   gap: 30px;
+   [data-animate] {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all 0.3s ease-out;
+   }
+   .grid-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 30px;
+   }
+   .form-item {
+      position: relative;
+      .placeholder {
+         position: absolute;
+         left: 0;
+         top: 12px;
+         font-family: $Proxima;
+         font-size: 16px;
+         font-weight: 300;
+         line-height: 19px;
+         color: $too_low_light;
+         display: flex;
+         white-space: nowrap;
+         cursor: pointer;
+         transition: all 0.1s ease-out;
+      }
+      .error-message {
+         position: relative;
+         left: 0;
+         bottom: -8px;
+         font-size: 13px;
+         font-weight: 500;
+         line-height: 100%;
+         color: $error-bg;
+         display: none;
+         align-items: center;
+         transition: all 0.2s ease-out;
+         i {
+            margin-right: 3px;
+         }
+      }
+      input:focus + .placeholder,
+      textarea:focus+.placeholder {
+         font-size: 12px;
+         top: -15px;
+      }
+      &.error {
+         input {
+            border-bottom: 1px solid $error;
+         }
+         input + .placeholder {
+            color: $error-bg;
+         }
+         .error-message {
+            display: block;
+         }
+      }
+   }
+   .ui-button-wrap {
+      display: flex;
+      align-items: flex-end;
+   }
+   .ui-button {
+      @include button (
+         $adaptiveWidth: true,
+         $maxWidth: 200px
+      )
+   }
+   &.animate-show {
+      opacity: 1;
+         $i: 0.15s;
+         @for $item from 1 through 4 {
+            $i: $i + 0.15s;
+            [data-animate]:nth-child(#{$item}) {
+               opacity: 1;
+               visibility: visible;
+               transform: none;
+               transition-delay: $i;
+            }
+         }
+      }
+}
+
+
+
+@media all and (max-width: 540px) {
+   form {
+      .grid-item {
+         grid-template-columns: 1fr;
+      }
+   }
+   form .ui-button { justify-self: center; margin: 15px 0 0 0; }
+}

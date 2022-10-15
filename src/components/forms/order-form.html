@@ -1,0 +1,42 @@
+<form action="#" method="" id="order-form" class="animate">
+   <div class="grid-item">
+      <div class="form-item" data-animate>
+         <input type="text" name="user_name" id="user_name" class="field">
+         <label for="user_name" class="placeholder">Имя</label>
+         <div class="error-message"><i class="fas fa-exclamation-circle"></i> <span></span></div>
+      </div>
+
+      <div class="form-item" tabindex="1">
+         <input type="tel" name="user_phone" id="user_phone" class="field">
+         <label for="user_phone" class="placeholder">Телефон</label>
+         <div class="error-message"><i class="fas fa-exclamation-circle"></i> <span></span></div>
+      </div>
+   </div>
+
+   <div class="form-item" data-animate>
+      <div class="ui-select" tabindex="0">
+         <input readonly type="text" name="user_communication" id="user_communication" class="field">
+         <label for="user_communication" class="placeholder">Выберите модификацию</label>
+         <span class="menu-arrow"></span>
+         
+         <ul class="options">
+            <li data-value="Модификация 1">Модификация 1</li>
+            <li data-value="Модификация 2">Модификация 2</li>
+            <li data-value="Модификация 3">Модификация 3</li>
+         </ul>
+      </div>
+   </div>
+
+   <div class="form-item" data-animate>
+      <input type="text" name="user_email" id="user_email" class="field" >
+      <label for="user_email" class="placeholder">Email</label>
+      <div class="error-message"><i class="fas fa-exclamation-circle"></i> <span></span></div>
+   </div>
+
+   <div class="form-item" data-animate>
+      <textarea name="user_message" class="field"></textarea>
+      <label for="user_message" class="placeholder">Сообщение</label>
+   </div>
+
+   <button class="ui-button" type="submit"><span>Купить</span></button>
+</form>

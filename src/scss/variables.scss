@@ -1,0 +1,25 @@
+/* 
+----------------------------------------------------------------------
+   ! VARIABLES
+   В данном файле определены: 
+   * стили глобальных, переиспользуемых компонентов 
+   * переменные 
+   * используется файл с миксинами
+----------------------------------------------------------------------
+*/
+$dark: #0D0D0D;
+$dark_1: #17181A;
+$dark_2: #121213;
+$dark_3: #242528;
+$light: #fff;
+$too_low_light: rgba(255, 255, 255, 0.5);
+$low_light: rgba(255, 255, 255, 0.8);
+$decoration: #18E4FF;
+$overlay-bg: rgba(0, 0, 0, 0.95);
+$error: #B10444;
+$error-bg: #FACDD4;
+
+// Fonts
+$Montserrat: 'Montserrat', sans-serif;
+$Proxima: 'Proxima Nova', sans-serif;
+$Futura: 'Futura New', sans-serif;

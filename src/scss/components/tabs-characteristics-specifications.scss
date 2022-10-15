@@ -1,0 +1,122 @@
+.character-block {
+   .text {
+      @include uiTextElement (
+         $margin: 0 0 20px 0,
+         $fontSize: 16px,
+         $fontWeight: 300,
+         $lineHeight: 150%,
+         $maxWidth: 1000px,
+      );
+      @include scrollAnimate($animateShowDelay: 0.1s);
+   }
+   .list {
+      margin: 40px 0 120px 0;
+      @include scrollAnimate($animateShowDelay: 0.1s);
+      .heading-list {
+         @include uiTextElement (
+            $margin: 0 0 20px 0,
+            $fontFamily: $Proxima,
+            $fontSize: 25px,
+            $fontWeight: 600,
+            $lineHeight: 94%,
+         );
+         @include scrollAnimate($animateShowDelay: 0.15s);
+      }
+      ul {
+         li {
+            @include uiTextElement (
+               $margin: 15px 0,
+               $fontSize: 16px,
+               $fontWeight: 300,
+               $lineHeight: 140%,
+            );
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.4s ease-out;
+            &:before {
+               content: '';
+               margin-right: 10px;
+               position: relative;
+               top: 2px;
+               display: block;
+               width: 22px;
+               height: 17px;
+               border-radius: 50%;
+               background: url('../../img/app/icons/check-blue.svg') no-repeat center / contain;
+            }
+         }
+      }
+      &.animate-show {
+         $i: 0.3s;
+         @for $item from 1 through 6 {
+            $i: $i + 0.1s;
+            ul li:nth-child(#{$item}) {
+               opacity: 1;
+               visibility: visible;
+               transform: none;
+               transition-delay: $i;
+            }
+         }
+      }
+   }
+   .characteristics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 100px;
+      .grid-item {
+         .title {
+            @include uiTextElement (
+               $margin: 0 0 20px 0,
+               $fontFamily: $Proxima,
+               $fontSize: 25px,
+               $fontWeight: 600,
+               $lineHeight: 94%,
+            );
+            @include scrollAnimate($animateShowDelay: 0.15s);
+         }
+         ul {
+            li {
+               @include uiTextElement (
+                  $padding: 15px 0,
+                  $fontSize: 16px,
+                  $fontWeight: 300,
+                  $lineHeight: 140%,
+                  $color: $low_light
+               );
+               opacity: 0;
+               visibility: hidden;
+               transform: translateY(15px);
+               transition: all 0.4s ease-out;
+               &:not(:last-child) {
+                  border-bottom: 1px dotted $too_low_light;
+               }
+            }
+         }
+         &.animate-show {
+            $i: 0.3s;
+            @for $item from 1 through 4 {
+               $i: $i + 0.1s;
+               ul li:nth-child(#{$item}) {
+                  opacity: 1;
+                  visibility: visible;
+                  transform: none;
+                  transition-delay: $i;
+               }
+            }
+         }
+      }
+   }
+}
+
+@media all and (max-width: 768px) {
+   .character-block .characteristics { gap: 70px; }
+}
+
+@media all and (max-width: 660px) {
+   .character-block .characteristics { grid-template-columns: 1fr; gap: 50px; }
+}

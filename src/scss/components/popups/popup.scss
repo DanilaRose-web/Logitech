@@ -1,0 +1,69 @@
+/* 
+----------------------------------------------------------------------
+   ! popup (каркас)
+----------------------------------------------------------------------
+*/
+.popup-wrap {
+   padding: 0 15px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   min-height: 100vh;
+   background: $overlay-bg;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 1fr;
+   opacity: 0;
+   visibility: hidden;
+   z-index: -1;
+   overflow: auto;
+   transition: all 0.2s ease-in-out 0.3s;
+   .popup {
+      margin: 30px;
+      padding: 40px;
+      max-width: max-content;
+      width: 100%;
+      justify-self: center;
+      align-self: center;
+      border-radius: 10px;
+      box-shadow: 20px 20px 50px rgb(0 0 0 / 50%);
+      background: rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      border-left: 1px solid rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.1);
+      position: relative;
+      z-index: 2;
+      transition: all 0.2s ease-in-out 0s;
+   }
+   &.active {
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.2s ease-in-out 0s;
+      z-index: 3;
+      .popup {
+         opacity: 1;
+         visibility: visible;
+         transform: scale(1);
+         transition: all 0.3s ease-in-out 0.2s;
+      }
+   }
+   .popup-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+      cursor: pointer;
+   }
+}
+
+
+@media all and (max-width: 450px) {
+   .popup-wrap .popup { padding: 40px 20px; }
+}

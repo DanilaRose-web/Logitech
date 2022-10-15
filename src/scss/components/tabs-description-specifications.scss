@@ -1,0 +1,127 @@
+.descr-item {
+   margin: 0 auto;
+   max-width: 1280px;
+   padding-bottom: 120px;
+   display: grid;
+   grid-template-columns: 400px 1fr;
+   grid-template-rows: auto;
+   gap: 140px;
+   .img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include scrollAnimate($animateShowDelay: 0.1s);
+      img {
+         max-width: 100%;
+         height: auto;
+      }
+   }
+
+   .texts {
+      padding-left: 140px;
+      position: relative;
+      top: 60px;
+      @include scrollAnimate($animateShowDelay: 0.15s);
+      &:before {
+         content: '';
+         position: absolute;
+         top: 25px;
+         left: 0;
+         width: 4px;
+         height: 0;
+         background: $decoration;
+      }
+      &.animate-show:before {
+         animation: calcHide 0.8s ease-out 0.85s forwards;
+      }
+      .point, .info {
+         align-self: start;
+      }
+      .point {
+         width: 50px;
+         height: 50px;
+         position: absolute;
+         top: 0;
+         left: -23px;
+         @include scrollAnimate($animateShowDelay: 0.4s);
+         &:before, &:after {
+            content: '';
+            position: absolute;
+         }
+         &:before {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: $decoration;
+         }
+         &:after {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid $light;
+         }
+      }
+
+      .info {
+         .descr-item-title {
+            @include uiTextElement (
+               $margin: 0 0 20px 0,
+               $fontFamily: $Proxima,
+               $fontSize: 35px,
+               $fontWeight: 600,
+               $lineHeight: 94%,
+            );
+            @include scrollAnimate($animateShowDelay: 0.25s);
+         }
+         .text {
+            @include uiTextElement (
+               $fontSize: 16px,
+               $fontWeight: 300,
+               $lineHeight: 160%,
+               $maxWidth: 600px
+            );
+            @include scrollAnimate($animateShowDelay: 0.3s);
+         }
+      }
+   }
+   &:last-child {
+      padding-bottom: 0;
+      .texts:before {
+         display: none;
+      }
+   }
+}
+
+
+@media all and (max-width: 1330px) {
+   .descr-item { gap: 100px; }
+   .descr-item .texts { padding-left: 100px; }
+}
+
+@media all and (max-width: 1260px) {
+   .descr-item { grid-template-columns: 300px 1fr; }
+   .descr-item .texts { top: 0; }
+}
+
+@media all and (max-width: 1100px) {
+   .descr-item {padding-bottom: 80px;  grid-template-columns: 1fr; gap: 30px; }
+   .descr-item .texts { padding-left: 0; }
+   .descr-item .texts .info .text { max-width: 100%; }
+   .descr-item .texts:before { display: none; }
+   .descr-item .img { max-width: 400px; margin: 0 auto; }
+   .descr-item .texts, .descr-item .img { align-self: center; }
+   .descr-item .texts .point { top: -60px; left: 0; display: none; }
+   // .descr-item .texts .info .descr-item-title, .descr-item .texts .info { text-align: center; }
+}
+
+@keyframes calcHide {
+   0% { height: 0; }
+   100% { height: calc(100% + 120px); }
+}

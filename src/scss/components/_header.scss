@@ -1,0 +1,84 @@
+header {
+   padding: 30px 0;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 3;
+   &.scroll {
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.2);
+      background: $dark;
+      animation: headerFadeRev 0.3s ease-out forwards;
+      &.active {
+         animation: headerFade 0.3s ease-out forwards;
+      }
+   }
+   .ui-container {
+      @include container($flex: true, $maxWidth: calc(100% - 160px));
+   }
+}
+
+.h-menu {
+   ul {
+      display: flex;
+      align-items: center;
+      li {
+         margin: 0 20px;
+         a {
+            padding: 5px;
+            position: relative;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 10%;
+            color: $light;
+            transition: all 0.2s ease-out;
+            &:after {
+               content: '';
+               position: absolute;
+               bottom: 0;
+               left: 0;
+               width: 0;
+               height: 1px;
+               background: $decoration;
+               transition: all 0.2s ease-out;
+            }
+         }
+         &:hover {
+            a {
+               &:after {
+                  width: 100%;
+               }
+            }
+         }
+      }
+   }
+}
+
+
+@keyframes headerFade {
+   0% { transform: translateY(-100%); opacity: 0; visibility: hidden; }
+   100% { transform: translateY(0); opacity: 1; visibility: visible; }
+}
+
+@keyframes headerFadeRev {
+   0% { transform: translateY(0); opacity: 1; visibility: visible; }
+   100% { transform: translateY(-100%); opacity: 0; visibility: hidden; }
+}
+
+
+@media all and (max-width: 1000px) {
+   header .ui-container { max-width: 100%; }
+}
+
+@media all and (max-width: 640px) {
+   .h-menu { display: none; }
+}
+
+@media all and (min-width: 1920px) {
+   header .ui-container { max-width: 1765px; }
+}

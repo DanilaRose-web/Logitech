@@ -1,0 +1,69 @@
+/* 
+----------------------------------------------------------------------
+   ! IMPORT
+----------------------------------------------------------------------
+*/ 
+@import './fonts';
+@import '../libs/reset.min';
+@import '../libs/bootstrap-grid.min';
+@import "./variables";
+@import './scss-pro/mixins';
+@import './ui-components';
+
+// импорт стилей переиспользуемых компонентов
+@import './components/_header';
+@import './components/_footer';
+@import './components/_mobile-menu';
+@import './components/tabs-description-specifications';
+@import './components/tabs-characteristics-specifications';
+
+// секции
+@import './components/sections/section-main';
+@import './components/sections/section-about';
+@import './components/sections/section-specifications';
+@import './components/sections/section-contacts';
+
+// popups
+@import './components/popups/popup';
+@import './components/popups/order-popup';
+
+// forms 
+@import './components/forms/form';
+
+// странциы
+
+// импорт стилей компонентов
+@import '../../node_modules/swiper/swiper-bundle.min';
+
+
+
+
+
+
+
+/* 
+----------------------------------------------------------------------
+   ! MAIN STYLES
+   * стили на корневых элементах (html, body)
+----------------------------------------------------------------------
+*/ 
+
+
+
+html,body {
+   height: 100%;
+   // all: unset; // сбрасывыает все стили до значений по умолчанию
+}
+
+body {
+   position: relative;
+   font-family: $Montserrat;
+   scroll-behavior: smooth;
+   transition: all 0.4s ease-out;
+   &.hidden {
+      overflow: hidden;
+   }
+}
+
+
+

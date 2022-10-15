@@ -1,0 +1,54 @@
+.section-about {
+   padding: 90px 0;
+   background: linear-gradient(180deg, #252628 0%, #17181A 100%);
+   .ui-container {
+      @include container ($flex: true)
+   }
+
+   .about-content {
+      padding: 0 clamp(40px, 8vw, 80px) 0 clamp(100px, 8vw, 160px);
+      display: grid;
+      grid-template-columns: minmax(450px, 0.7fr) 1fr;
+      grid-template-rows: auto;
+      gap: 50px;
+      .ac-img, .ac-info {
+         align-self: center;
+      }
+      .ac-img {
+         img {
+            max-width: 100%;
+            height: auto;
+         }
+         @include scrollAnimate($animateShowDelay: 0.2s);
+      }
+      .ac-info {
+         max-width: 700px;
+         .ui-text {
+            @include uiTextElement (
+               $margin: 0 0 30px 0,
+               $fontSize: 16px,
+               $fontWeight: 300,
+               $lineHeight: 150%,
+            );
+            @include scrollAnimate($animateShowDelay: 0.1s);
+         }
+      }
+      .ui-button {
+         margin-top: 40px;
+         max-width: 200px;
+         width: 100%;
+         @include scrollAnimate($animateShowDelay: 0.15s);
+      }
+   }
+}
+
+
+@media all and (max-width: 1000px) {
+   .section-about .about-content { grid-template-columns: 1fr; justify-items: center; padding: 0 40px; }
+   .section-about .about-content .ac-img { max-width: 600px; order: 2; }
+   .section-about .about-content .ac-info { max-width: 100%; order: 1; }
+}
+
+@media all and (max-width: 640px) {
+   .section-about .about-content { padding: 0; }
+}
